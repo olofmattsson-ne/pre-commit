@@ -7,7 +7,7 @@ set -e
 # workaround to allow GitHub Desktop to work, add this (hopefully harmless) setting here.
 export PATH=$PATH:/usr/local/bin
 
-for dir in $(echo "$@" | xargs -n1 dirname | sort -u | uniq); do
+for dir in $(echo "$@" | xargs -n1 dirname | sort -u | uniq | grep -Ev 'modules|common' ); do
   terraform init -backend=false $dir
   terraform validate $dir
 done
