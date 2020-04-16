@@ -23,7 +23,7 @@
   description: Linter for Terraform source code
   entry: hooks/tflint.sh
   language: script
-  files: \.(tf|tfvars)$
+  files: \.(tf)$
   exclude: \.+.terraform\/.*$
 
 - id: terragrunt-hclfmt

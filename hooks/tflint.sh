@@ -15,9 +15,5 @@ fi
 export PATH=$PATH:/usr/local/bin:~/bin
 
 for file in "`echo $@ | grep -Ev 'modules|common'`"; do
-  if [[ "$file" =~ "tfvars" ]]; then
-    tflint $(dirname $file) --var-file=$file
-  else
-    tflint $file --deep
-  fi
+  tflint $file --deep
 done
