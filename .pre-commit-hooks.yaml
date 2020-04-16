@@ -5,7 +5,7 @@
   description: Rewrites all Terraform configuration files to a canonical format
   entry: hooks/terraform-fmt.sh
   language: script
-  files: \.tf$
+  files: \.(tf|tfvars)$
   exclude: \.+.terraform\/.*$
   require_serial: true
 
@@ -14,8 +14,8 @@
   description: Validates all Terraform configuration files
   entry: hooks/terraform-validate.sh
   language: script
-  files: \.tf*$
-  exclude: \.+.terraform\/.*$
+  files: \.(tf|tfvars)$
+  exclude: \.(+.terraform\/.*|*secrets*)$
   require_serial: true
 
 - id: tflint
@@ -23,7 +23,7 @@
   description: Linter for Terraform source code
   entry: hooks/tflint.sh
   language: script
-  files: \.tf*$
+  files: \.(tf|tfvars)$
   exclude: \.+.terraform\/.*$
 
 - id: terragrunt-hclfmt
