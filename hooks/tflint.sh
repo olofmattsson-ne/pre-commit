@@ -8,5 +8,9 @@ set -e
 export PATH=$PATH:/usr/local/bin
 
 for file in "`echo $@ | grep -Ev 'modules|common'`"; do
-  tflint $file
+  if [[ "$file" =~ "tfvars" ]]; then
+    tflint $(dirname $file)
+  else
+    tflint $file --deep
+  fi
 done
