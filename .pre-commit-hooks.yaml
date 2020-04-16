@@ -15,7 +15,7 @@
   entry: hooks/terraform-validate.sh
   language: script
   files: \.(tf|tfvars)$
-  exclude: \.+(.terraform\/.*|secrets.tf)$
+  exclude: (.terraform\/.*|^.*secrets.tf)
   require_serial: true
 
 - id: tflint
