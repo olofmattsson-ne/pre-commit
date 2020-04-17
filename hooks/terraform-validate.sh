@@ -9,6 +9,5 @@ export PATH=$PATH:/usr/local/bin
 
 for dir in $(echo "$@" | xargs -n1 dirname | sort -u | uniq | grep -Ev 'modules|common' ); do
   terraform init -backend=false $dir
-  cd $dir
-  terraform validate
+  terraform validate $dir
 done
