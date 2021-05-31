@@ -7,11 +7,6 @@ set -e
 # workaround to allow GitHub Desktop to work, add this (hopefully harmless) setting here.
 export PATH=$PATH:/usr/local/bin
 
-<<<<<<< HEAD
-for dir in $(echo "$@" | xargs -n1 dirname | sort -u | uniq | grep -Ev 'modules|common' ); do
-  terraform init -backend=false $dir
-  terraform validate $dir
-=======
 # Disable output not usually helpful when running in automation (such as guidance to run plan after init)
 export TF_IN_AUTOMATION=1
 
@@ -24,7 +19,6 @@ for dir in $(echo "$@" | xargs -n1 dirname | sort -u | uniq); do
   terraform init -backend=false || VALIDATE_ERROR=$?
   terraform validate || VALIDATE_ERROR=$?
   popd >/dev/null
->>>>>>> e9250bd69bb312d55364213ff5ff037a09be55d9
 done
 
 exit ${VALIDATE_ERROR}
