@@ -9,11 +9,11 @@ set -e
 if ! [ -x "$(command -v tflint)" ]; then
   mkdir ~/bin
   cd ~/bin
-  wget https://github.com/terraform-linters/tflint/releases/download/v0.20.3/tflint_linux_amd64.zip
+  wget https://github.com/terraform-linters/tflint/releases/download/v0.29.0/tflint_linux_amd64.zip
   unzip tflint_linux_amd64.zip
 fi
 export PATH=$PATH:/usr/local/bin:~/bin
 
 for file in "`echo $@ | grep -Ev 'modules|common'`"; do
-  tflint $file --deep
+  tflint $file
 done
